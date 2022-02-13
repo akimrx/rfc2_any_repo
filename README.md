@@ -12,10 +12,16 @@ Installing Ansible requirements
 -------------------------------
 
 ```shell
-$ ansible-galaxy install -r ansible/requirements.yml 
+$ ansible-galaxy role install -r ansible/requirements.yml 
 Starting galaxy role install process
 - extracting rfc2_bootstrap to /home/akimrx/.ansible/roles/rfc2_bootstrap
 - rfc2_bootstrap (1.0.0) was installed successfully
+
+$ ansible-galaxy collection install -r requirements.yml                          
+Process install dependency map
+Starting collection install process
+Installing 'community.docker:2.1.1' to '/home/akimrx/.ansible/collections/ansible_collections/community/docker'
+
 ```
 
 List installed Ansible roles and collections
