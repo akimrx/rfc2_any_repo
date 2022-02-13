@@ -1,0 +1,5 @@
+---
+
+- hosts: myapplication
+  roles:
+    - role: myapp-1.0.0

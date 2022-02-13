@@ -5,11 +5,10 @@ collections:
 
 roles:
   - src: https://github.com/akimrx/rfc2_bootstrap
+    version: 1.0.0
+  - src: https://github.com/akimrx/rfc2_bootstrap
     version: 1.0.1
     name: bootstrap-1.0.1
-  - src: https://github.com/akimrx/rfc2_bootstrap
-    version: 1.0.0
-    name: bootstrap-1.0.0
   - src: https://github.com/akimrx/rfc2_bootstrap
     version: 1.0.2
     name: bootstrap-1.0.2

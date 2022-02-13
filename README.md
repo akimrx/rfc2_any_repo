@@ -162,3 +162,30 @@ Example usage in playbooks:
   roles:
     - bootstrap-1.0.1
 ```
+
+
+Installing role with dependencies
+---------------------------------
+
+Dependencies resolving by `rfc2_myapp` role:
+```shell
+Starting galaxy role install process
+- extracting rfc2_bootstrap to /Users/faskhutdinov/.ansible/roles/rfc2_bootstrap
+- rfc2_bootstrap (1.0.0) was installed successfully
+- bootstrap-1.0.1 (1.0.1) is already installed, skipping.
+- bootstrap-1.0.2 (1.0.2) is already installed, skipping.
+- extracting myapp-1.0.0 to /Users/faskhutdinov/.ansible/roles/myapp-1.0.0
+- myapp-1.0.0 (1.0.0) was installed successfully
+# Triggered dependenciec from rfc2_myapp
+[WARNING]: - dependency rfc2_bootstrap (1.0.2) (1.0.2) from role myapp-1.0.0 differs from already installed version (1.0.0), skipping
+- adding dependency: rfc2_nginx (1.0.0)
+- adding dependency: rfc2_haproxy (1.0.0)
+- extracting rfc2_nginx to /Users/faskhutdinov/.ansible/roles/rfc2_nginx
+- rfc2_nginx (1.0.0) was installed successfully
+- extracting rfc2_haproxy to /Users/faskhutdinov/.ansible/roles/rfc2_haproxy
+- rfc2_haproxy (1.0.0) was installed successfully
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Skipping 'community.docker' as it is already installed
+```
