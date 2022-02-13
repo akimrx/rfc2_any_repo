@@ -61,3 +61,51 @@ rfc2_bootstrap : bootstrap - set hostname --------------------------------------
 rfc2_bootstrap : bootstrap - set timezone ----------------------------------------------------------------------------------------------------------------------------- 1.55s
 Playbook run took 0 days, 0 hours, 0 minutes, 12 seconds
 ```
+
+Force update dependencies for version upgrade
+---------------------------------------------
+```shell
+$ ansible-galaxy install -r requirements.yml --force
+Starting galaxy role install process
+- changing role rfc2_bootstrap from 1.0.0 to 1.0.1
+- extracting rfc2_bootstrap to /home/akimrx/.ansible/roles/rfc2_bootstrap
+- rfc2_bootstrap (1.0.1) was installed successfully
+```
+
+Restart the playbook after updating the dependencies
+----------------------------------------------------
+```shell
+$ ansible-playbook -i inventory/example/hosts.yml playbooks/webservers.yml          
+
+PLAY [webservers] *****************************************************************************************************
+Sunday 13 February 2022  12:02:14 +0300 (0:00:00.010)       0:00:00.010 ******* 
+Sunday 13 February 2022  12:02:17 +0300 (0:00:02.485)       0:00:02.496 ******* 
+Sunday 13 February 2022  12:02:20 +0300 (0:00:03.137)       0:00:05.634 ******* 
+Sunday 13 February 2022  12:02:21 +0300 (0:00:01.483)       0:00:07.117 ******* 
+Sunday 13 February 2022  12:02:23 +0300 (0:00:01.903)       0:00:09.021 ******* 
+
+TASK [rfc2_bootstrap : bootstrap - install NTP package] ***********************************************************************************************************************
+changed: [lb1.akimrx.cloud]
+Sunday 13 February 2022  12:02:33 +0300 (0:00:10.095)       0:00:19.117 ******* 
+
+TASK [rfc2_bootstrap : bootstrap - configure NTP service] ***********************************************************************************************************************
+changed: [lb1.akimrx.cloud]
+Sunday 13 February 2022  12:02:36 +0300 (0:00:02.982)       0:00:22.099 ******* 
+
+RUNNING HANDLER [rfc2_bootstrap : ntp - restart] ***********************************************************************************************************************
+changed: [lb1.akimrx.cloud]
+
+PLAY RECAP ************************************************************************************************************
+lb1.akimrx.cloud           : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+Sunday 13 February 2022  12:02:38 +0300 (0:00:01.950)       0:00:24.049 ******* 
+=============================================================================== 
+rfc2_bootstrap : bootstrap - install NTP package ------------------------------------------------------------------------------------------------------------- 10.10s
+rfc2_bootstrap : bootstrap - install base packages -------------------------------------------------------------------------------------------------------------- 3.14s
+rfc2_bootstrap : bootstrap - configure NTP service -------------------------------------------------------------------------------------------------------------- 2.98s
+Gathering Facts ---------------------------------------------------------------------------------------------- 2.49s
+rfc2_bootstrap : ntp - restart ------------------------------------------------------------------------------- 1.95s
+rfc2_bootstrap : bootstrap - set hostname -------------------------------------------------------------------------------------------------------------- 1.90s
+rfc2_bootstrap : bootstrap - set timezone -------------------------------------------------------------------- 1.48s
+Playbook run took 0 days, 0 hours, 0 minutes, 24 seconds
+```
