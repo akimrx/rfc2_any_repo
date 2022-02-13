@@ -10,3 +10,9 @@ roles:
   - src: https://github.com/akimrx/rfc2_bootstrap
     version: 1.0.0
     name: bootstrap-1.0.0
+  - src: https://github.com/akimrx/rfc2_bootstrap
+    version: 1.0.2
+    name: bootstrap-1.0.2
+  - src: https://github.com/akimrx/rfc2_myapp
+    version: 1.0.0
+    name: myapp-1.0.0
