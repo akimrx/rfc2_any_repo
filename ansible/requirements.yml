@@ -1,0 +1,3 @@
+---
+- src: https://github.com/akimrx/rfc2_bootstrap
+  version: 1.0.0

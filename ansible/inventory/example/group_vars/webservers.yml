@@ -1,0 +1,5 @@
+---
+bootstrap_apt_packages:
+  - vim
+  - htop
+  - jq
