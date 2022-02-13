@@ -2,4 +2,5 @@
 
 - hosts: webservers
   roles:
-    - role: rfc2_bootstrap
+    # - role: bootstrap-1.0.1
+    - role: bootstrap-1.0.0

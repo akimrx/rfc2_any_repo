@@ -109,3 +109,50 @@ rfc2_bootstrap : bootstrap - set hostname --------------------------------------
 rfc2_bootstrap : bootstrap - set timezone -------------------------------------------------------------------- 1.48s
 Playbook run took 0 days, 0 hours, 0 minutes, 24 seconds
 ```
+
+
+Storing multiple versions of the same role
+------------------------------------------
+
+Example `requirements.yml`:
+```yaml
+---
+- src: https://github.com/akimrx/rfc2_bootstrap
+  version: 1.0.1
+  name: bootstrap-1.0.1
+- src: https://github.com/akimrx/rfc2_bootstrap
+  version: 1.0.0
+  name: bootstrap-1.0.0
+```
+
+Install dependencies:
+```shell
+$ ansible-galaxy install -r requirements.yml --force                                
+Starting galaxy role install process
+- extracting bootstrap-1.0.1 to /home/akimrx/.ansible/roles/bootstrap-1.0.1
+- bootstrap-1.0.1 (1.0.1) was installed successfully
+- extracting bootstrap-1.0.0 to /home/akimrx/.ansible/roles/bootstrap-1.0.0
+- bootstrap-1.0.0 (1.0.0) was installed successfully
+```
+
+Show installed roles:
+```shell
+$ ansible-galaxy list                                                               
+# /home/akimrx/.ansible/roles
+- bootstrap-1.0.1, 1.0.1
+- rfc2_bootstrap, 1.0.1
+- bootstrap-1.0.0, 1.0.0
+```
+
+
+Example usage in playbooks:
+```yaml
+---
+- hosts: servers1
+  roles:
+    - bootstrap-1.0.0
+
+- hosts: servers2
+  roles:
+    - bootstrap-1.0.1
+```
